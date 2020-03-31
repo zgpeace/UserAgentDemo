@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     let urlSessionButton: UIButton = UIButton()
     let webViewButton: UIButton = UIButton()
+    let webView = WKWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,14 +85,13 @@ class ViewController: UIViewController {
     @objc func requestWebViewAgent() {
         print("requestWebViewAgent")
         
-        let webView = WKWebView()
         webView.evaluateJavaScript("navigator.userAgent") { (userAgent, error) in
             if let ua = userAgent {
                 print("default WebView User-Agent > \(ua)")
             }
             
             // customize User-Agent
-            webView.customUserAgent = "zgpeace User-Agent"
+            self.webView.customUserAgent = "zgpeace User-Agent"
         }
     }
 
